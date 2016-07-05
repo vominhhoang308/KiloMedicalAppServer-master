@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+        <script src="jquery-2.2.0.js" type="text/javascript"></script>
+        <script type="text/javascript" src="script2.js"></script>
+        <script src="xml2json.js" type="text/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <style>
+            .box{
+                background-color : rgba(200,200,200,0.5);
+                padding :5px;
+                margin :5px;
+                text-align : center;
+                cursor : pointer;
+            }
+            .chat-container{
+                padding : 10px;
+                border : 1px solid #CCC;
+                height : 80vh;
+                overflow-y: scroll;
+            }
+            .message{
+                background-color : rgba(200,200,200,0.3);
+                padding :5px;
+                padding-left: 20px;
+                margin :7px;
+            }
+            .message-right{
+                text-align:right;
+            }
+            .room-nav{
+                cursor : pointer;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <button  type="button" style = "display : none" class ="ajax-button" data-action = "/Project/rest/chats/history/" data-add-to-url = "" data-callback ="getHistory" data-type ="GET" id="getHistory">get history</button>
+<ul class="nav nav-tabs">
+                <li role="presentation" id="getGlobalChat" class ="ajax-button active" data-action = "/Project/rest/chats/global" data-callback ="createGlobalChat" data-type ="GET"><a href="#">Global chat</a></li>
+                <li role="presentation" id="getRoomChats" class ="ajax-button" data-action = "/Project/rest/chats/rooms" data-callback ="createRoomChats" data-type ="GET"><a href="#">Rooms</a></li>
+                <li role="presentation" class ="ajax-button" data-action = "/Project/rest/chats/privateChats" data-add-to-url = "" data-callback ="getPrivate" data-type ="GET" id="getPrivateChats"><a href="#">Private chats</a></li>
+            </ul>
+
+            <div id="globalChat" style = "display : none"></div>
+
+            <div id="roomChats" style = "display : none"></div>
+            <div id="privateChatsContainer" style = "display : none">
+                <div class = row>
+                    <div class = "col-md-8">
+                        <button  type="button" class ="ajax-button btn btn-mdv btn-primary" data-action = "/Project/rest/chats/privateChat" data-add-to-url = "" data-callback ="createPrivate" data-type ="POST" id="createPrivateChat">createPrivateChat</button>
+                        <div id="privateChats"></div>
+                    </div>
+                </div>
+            </div>
+<button  type="button" style = "display : none" class ="ajax-button" data-action = "/Project/rest/chats/history/" data-add-to-url = "" data-callback ="getHistory" data-type ="GET" id="getHistory">get history</button>
+
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/testtesttest" data-add-to-url = "" data-callback ="justLog" data-type ="POST" id="createAssignment">createAssignment</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/0" data-add-to-url = "" data-callback ="justLog" data-type ="GET" id="getAssignment">getAssignment</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments" data-add-to-url = "" data-callback ="justLog" data-type ="GET" id="getAssignments">getAssignments</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/acceptAssignment/0" data-add-to-url = "" data-callback ="justLog" data-type ="PUT" id="acceptAssignment">acceptAssignment</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/assignmentDone/0" data-add-to-url = "" data-callback ="justLog" data-type ="PUT" id="assignmentDone">assignmentDone</button>
+            </br>
+            <p>Select a file : <input type="file" name="file" /></p>
+            <button  type="button" id="uploadFile">uploadFile</button>
+            <div id="imgTest"></div>
+
+            <button  type="button" id="newMessages" class ="ajax-button" data-add-to-url = "" data-action = "/Project/rest/chats/newMessagesCount/5" data-callback ="justLog" data-type ="GET">newMEssages</button>
+    </body>
+</html>
+
+
+<!--
+
+            <ul class="nav nav-tabs">
+                <li role="presentation" id="getGlobalChat" class ="ajax-button active" data-action = "/Project/rest/chats/global" data-callback ="createGlobalChat" data-type ="GET"><a href="#">Global chat</a></li>
+                <li role="presentation" id="getRoomChats" class ="ajax-button" data-action = "/Project/rest/chats/rooms" data-callback ="createRoomChats" data-type ="GET"><a href="#">Rooms</a></li>
+                <li role="presentation" class ="ajax-button" data-action = "/Project/rest/chats/privateChats" data-add-to-url = "" data-callback ="getPrivate" data-type ="GET" id="getPrivateChats"><a href="#">Private chats</a></li>
+            </ul>
+
+            <div id="globalChat" style = "display : none"></div>
+
+            <div id="roomChats" style = "display : none"></div>
+            <div id="privateChatsContainer" style = "display : none">
+                <div class = row>
+                    <div class = "col-md-8">
+                        <button  type="button" class ="ajax-button btn btn-mdv btn-primary" data-action = "/Project/rest/chats/privateChat" data-add-to-url = "" data-callback ="createPrivate" data-type ="POST" id="createPrivateChat">createPrivateChat</button>
+                        <div id="privateChats"></div>
+                    </div>
+                </div>
+            </div>
+<button  type="button" style = "display : none" class ="ajax-button" data-action = "/Project/rest/chats/history/" data-add-to-url = "" data-callback ="getHistory" data-type ="GET" id="getHistory">get history</button>
+
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/testtesttest" data-add-to-url = "" data-callback ="justLog" data-type ="POST" id="createAssignment">createAssignment</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/0" data-add-to-url = "" data-callback ="justLog" data-type ="GET" id="getAssignment">getAssignment</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments" data-add-to-url = "" data-callback ="justLog" data-type ="GET" id="getAssignments">getAssignments</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/acceptAssignment/0" data-add-to-url = "" data-callback ="justLog" data-type ="PUT" id="acceptAssignment">acceptAssignment</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/assignmentDone/0" data-add-to-url = "" data-callback ="justLog" data-type ="PUT" id="assignmentDone">assignmentDone</button>
+            </br>
+            <p>Select a file : <input type="file" name="file" /></p>
+            <button  type="button" id="uploadFile">uploadFile</button>
+            <div id="imgTest"></div>
+
+            <button  type="button" id="newMessages" class ="ajax-button" data-add-to-url = "" data-action = "/Project/rest/chats/newMessagesCount/5" data-callback ="justLog" data-type ="GET">newMEssages</button>-->

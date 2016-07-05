@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kilo chat</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<style>
+		.chat-discussion, .chat-users{
+			height : 60vh
+		}
+		.emergency-message{
+			background: rgba(236, 71, 88, 0.5);
+			color : #FFF;
+		}
+		.chat-user{
+			cursor : pointer;
+		}
+	</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+
+            </li>
+            <li>
+                <a href="cabinet.html"><i class="fa fa-users"></i> <span class="nav-label">Public chat</a>
+            </li>
+            <li>
+                <a href="rooms.html"><i class="fa fa-database"></i> <span class="nav-label">Rooms</span></a>
+            </li>
+            <li >
+                <a href="private_chats.html"><i class="fa fa-star"></i> <span class="nav-label">Private chat</span></a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<div id="page-wrapper" class="gray-bg">
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li>
+                <span class="m-r-sm text-muted welcome-message">Welcome to Kilo chat</span>
+            </li>
+            
+            <li>
+                <a href="#"  id="logOut">
+                    <i class="fa fa-sign-out"></i> Log out
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+</div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Rooms</h2>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-lg-12">
+
+                <div class="ibox chat-view">
+
+                    <div class="ibox-title">
+                        <h3 id = "chat-name"></h3>
+                    </div>
+
+
+                    <div class="ibox-content">
+
+                        <div class="row">
+
+                            <div class="col-md-9 ">
+                                <div class="chat-discussion" id = "currentChat">
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="chat-users">
+
+
+                                    <div class="users-list" id = "rooms-list">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="chat-message-form">
+
+                                    <div class="form-group">
+
+                                        <textarea class="form-control message-input" name="message" placeholder="Enter message text"></textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+				<div class = "hr-line-dashed"></div>
+				<button class = "btn btn-md btn-success send-room-message" data-flag = "0" data-chat = "">Send</button>
+				<button class = "btn btn-md btn-danger pull-right send-room-message" data-flag = "1" data-chat = "">Emergency</button>
+
+
+                    </div>
+
+                </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- Mainly scripts -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="xml2json.js" type="text/javascript"></script>
+<script src="js/helper.js"></script>
+
+</body>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			type: 'GET',
+			url: '/Project/rest/chats/rooms',
+			success: function (data) {
+				var x2js = new X2JS();
+            			var chats = x2js.xml2json(data);
+				chats.roomChats.roomChat.forEach(function(cht){
+                			createRoomChatHTML(cht);
+            			});
+				$(".room-chat").first().trigger("click");
+			}
+		});
+		setInterval(function(){
+			$(".room-chat").each(function(){
+				var $This = $(this);
+				$.ajax({
+					type: 'GET',
+					url: '/Project/rest/chats/newMessagesCount/'+$This.data("chat"),
+					success: function (data) {
+						$This.children("div").children(".new-msgs").html(data);
+					}
+				});	
+			});
+		}, 1000);
+	});
+    	$(document.body).on('click', '.send-room-message', function () {
+        	var chatId = $(this).data('chat');
+        	var message = $(".message-input").val();
+        	var flag = $(this).data("flag");
+        	webSocketSend(chatId, flag, message);
+    	});
+    	$(document.body).on('click', '.room-chat', function () {
+		$('.send-room-message').data("chat", $(this).data("chat"));
+                $("#chat-name").html($(this).children("div").children("a").html())
+        	getHistory($(this).data("chat"));
+    	});
+</script>
+
+
+</html>

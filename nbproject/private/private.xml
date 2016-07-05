@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/web/cabinet_old.html</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/resource/UsersResource.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/filesController/FileUploadDownloadManager.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/web/script2.js</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/models/HistoryEntry.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/resource/AssignmentsResource.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/models/RoomChat.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/web/cabinet_new.html</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/socket/ChatMessageDecoder.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/web/script2_new.js</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/filesController/SavingToFiles.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/socket/ServerWebSocket.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/models/Assignment.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/collections/UsersCollection.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/models/Chat.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/models/User.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/web/js/helper.js</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/web/rooms.html</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/socket/ChatMessage.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/models/GlobalChat.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/models/PrivateChat.java</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/web/cabinet.html</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/web/private_chats.html</file>
+            <file>file:/C:/Users/kirak/Documents/NetBeansProjects/Project/src/java/resource/ChatsResource.java</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+        <script src="jquery-2.2.0.js" type="text/javascript"></script>
+        <script type="text/javascript" src="script2.js"></script>
+        <script src="xml2json.js" type="text/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="modal fade" id="usrss" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Add user to chat</h4>
+                    </div>
+                    <div class="modal-body">
+                        <select id = "pickUser" class = "form-control">
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id ="addUserToChat" class="btn btn-primary ajax-button " data-action = "/Project/rest/chats/privateChat" data-add-to-url = "" data-callback ="addUser" data-type ="PUT">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "container-fluid">
+            <div class = "row">
+                <div class = "col-md-8">
+                    <div class="alert alert-success" role="alert"><h2>Hi! <span id="username"></span></h2></div>
+                </div>
+                <div class = "col-md-4">
+                    <button  type="button" class ="btn btn-lg btn-warning" id="logOut">Log out</button>
+                </div>
+            </div>
+            <ul class="nav nav-tabs">
+                <li role="presentation" id="getGlobalChat" class ="ajax-button active" data-action = "/Project/rest/chats/global" data-callback ="createGlobalChat" data-type ="GET"><a href="#">Global chat</a></li>
+                <li role="presentation" id="getRoomChats" class ="ajax-button" data-action = "/Project/rest/chats/rooms" data-callback ="createRoomChats" data-type ="GET"><a href="#">Rooms</a></li>
+                <li role="presentation" class ="ajax-button" data-action = "/Project/rest/chats/privateChats" data-add-to-url = "" data-callback ="getPrivate" data-type ="GET" id="getPrivateChats"><a href="#">Private chats</a></li>
+            </ul>
+
+            <div id="globalChat" style = "display : none"></div>
+
+            <div id="roomChats" style = "display : none"></div>
+            <div id="privateChatsContainer" style = "display : none">
+                <div class = row>
+                    <div class = "col-md-8">
+                        <button  type="button" class ="ajax-button btn btn-mdv btn-primary" data-action = "/Project/rest/chats/privateChat" data-add-to-url = "" data-callback ="createPrivate" data-type ="POST" id="createPrivateChat">createPrivateChat</button>
+                        <div id="privateChats"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button  type="button" id="getUsers" style = "display:none">get users</button>
+            <div id="users">Users:</div>
+            <button  type="button" style = "display : none" class ="ajax-button" data-action = "/Project/rest/chats/history/" data-add-to-url = "" data-callback ="getHistory" data-type ="GET" id="getHistory">get history</button>
+
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/testtesttest" data-add-to-url = "" data-callback ="justLog" data-type ="POST" id="createAssignment">createAssignment</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/0" data-add-to-url = "" data-callback ="justLog" data-type ="GET" id="getAssignment">getAssignment</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments" data-add-to-url = "" data-callback ="justLog" data-type ="GET" id="getAssignments">getAssignments</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/acceptAssignment/0" data-add-to-url = "" data-callback ="justLog" data-type ="PUT" id="acceptAssignment">acceptAssignment</button>
+            <button  type="button" class ="ajax-button" data-action = "/Project/rest/assignments/assignmentDone/0" data-add-to-url = "" data-callback ="justLog" data-type ="PUT" id="assignmentDone">assignmentDone</button>
+            </br>
+            <p>Select a file : <input type="file" name="file" /></p>
+            <button  type="button" id="uploadFile">uploadFile</button>
+            <div id="imgTest"></div>
+
+            <button  type="button" id="newMessages" class ="ajax-button" data-add-to-url = "" data-action = "/Project/rest/chats/newMessagesCount/5" data-callback ="justLog" data-type ="GET">newMEssages</button>
+        </div>
+    </body>
+</html>

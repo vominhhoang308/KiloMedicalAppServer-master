@@ -1,0 +1,21 @@
+.box{
+	padding : 15px;
+	margin : 5px;
+	border : 1px solid  rgba(211,211,211, 0.9);
+	background : rgba(239,232,207, 1);
+}
+.box-small{
+	padding : 10px !important;
+	cursor : pointer;
+	text-align : center;
+}
+.box hr{
+	margin-top : 10px;
+	margin-bottom : 10px;
+}
+.btn, .form-control{
+	border-radius : 0px;
+}
+a:hover{
+	text-decoration : none;
+}

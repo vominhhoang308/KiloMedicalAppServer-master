@@ -1,0 +1,54 @@
+    /*$("#getGlobalChat").click(function () {
+        $(".global-chat").show();
+        $("#roomChats").hide();
+        $(".active").removeClass("active");
+        $(this).addClass("active");
+    });*/
+
+    //Get User
+    /*$.ajax({
+        type: 'GET',
+        url: '/Project/rest/users/user',
+        success: function (data) {
+            var x2js = new X2JS();
+            var user = x2js.xml2json(data);
+            role = user['user']['role'];
+            if (role === "orderly") {
+                $("#globalMessageBlock").remove();
+            } else {
+                $("#globalTitle").append(role + "s");
+            }
+            if (user['user'].hasOwnProperty("rooms")) {
+                var rooms = user["user"].rooms;
+                if (rooms instanceof Array) {
+                    $.each(rooms, function () {
+                        createRoomChats(this);
+                    });
+                } else
+                    createRoomChats(rooms);
+
+            }
+        }
+    });*/
+
+    /*function webSocketSend(flag, chat, room, role, usernameTo, username, message) {
+     var json = JSON.stringify({'flag': flag,
+     'chat': chat,
+     'room': room,
+     'role': role,
+     'usernameTo': usernameTo,
+     'username': username,
+     'message': message});
+     socket.send(json);
+     }*/
+
+    /*$("#sendGlobalMessage").click(function (event) {
+        var message = $("#globalMessage").val();
+        webSocketSend(false, 'global', '', role, '', username, message);
+    });*/
+
+        <!--<div class = "global-chat" id="globalMessageBlock">
+            <textarea id="globalMessages" readonly="readonly" class = "form-control" rows="10" cols="45"></textarea><br>
+            <input type="text" class = "form-control" placeholder="Message" id="globalMessage"/>
+            <button  type="button" class =" btn btn-md btn-success" id="sendGlobalMessage" style = "margin : 15px;">Send</button>
+        </div>-->
